@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Binder</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/vivify.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.12.0/css/all.min.css">
+  <!--===============================================================================================-->
+  <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="css/util.css"/>
+  <link rel="stylesheet" type="text/css" href="css/main.css"/>
+  <link rel="stylesheet" type="text/css" href="css/binder.css"/>
+  <link rel="stylesheet" href="css/notFound.css">
+  <!--===============================================================================================-->
+</head>
+
+<body>
+  <div class="limiter">
+    <div class="container-login100" style="background-image: url('images/bg-03.jpg');">
+      <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+        <div class="login100-form validate-form">
+          <span class="login100-form-title p-b-49">
+            Welcome to <span class="binder">Binder</span>
+            <h3 class="log mt-3">Login / Register</h3>
+          </span>
+
+          <div class="wrap-input100 validate-input m-b-80" data-validate="Username is required">
+            <span class="label-input100">Username</span>
+            <input class="input100" type="text" id="username" name="username" placeholder="Type your username"
+              onkeypress="inputEnter(event, 'login')" />
+            <span class="focus-input100" data-symbol="&#xf206;"></span>
+          </div>
+
+          <div class="container-login100-form-btn">
+            <div class="wrap-login100-form-btn">
+              <div class="login100-form-bgbtn"></div>
+              <button class="login100-form-btn" type="button" onclick="getUserByUsername()">
+                Login
+              </button>
+            </div>
+          </div>
+          <div class="txt1 text-center p-t-54 p-b-20">
+            <span>
+              Check me @
+            </span>
+          </div>
+
+          <div class="flex-c-m">
+            <a href="https://linkedin.com/in/vítor-marques" target="_blank" class="login100-social-item bg2">
+              <i class="fa fa-linkedin"></i>
+            </a>
+
+            <a href="https://github.com/VitorMarquesGit" target="_blank" class="login100-social-item bg1">
+              <i class="fa fa-github"></i>
+            </a>
+
+            <a href="mailto:vitor_emanuelmm@hotmail.com" class="login100-social-item bg3">
+              <i class="fa fa-envelope"></i>
+            </a>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-group animationPicker col-xs-12">
+    <select class="form-control selectAnimation d-none" id="anims">
+            <optgroup label="Fade Exit Animations">
+                <option value="fadeOutLeft">fadeOutLeft</option>
+                <option value="fadeOutRight">fadeOutRight</option>
+                <option value="fadeInLeft">fadeInLeft</option>
+                <option value="fadeInRight">fadeInRight</option>
+            </optgroup>
+        </select>
+  </div>
+
+    <div id="main" class="container pt-0 d-none">
+      <section id="header">
+        <div class="container blue borderXwidth">
+          <input type="search" id ="search" onkeypress="inputEnter(event, 'booksearch')" placeholder="Search" />
+          <a href="#" onclick="stateView()">HOME</a>
+          <a href="#" onclick="table(true)">LOVED BOOKS</a>
+          <a href="#" onclick="table(false)">HATED BOOKS</a>
+          <a id="logout" href="#" onclick="logout()">LOGOUT</a>
+        </div>
+      </section>
+
+      <div class="conteudo vivify box d-none" id="conteudo">
+        <div class="row text-center p-3">
+          <div class="col-sm-4" id="Title1"></div>
+          <div class="col-sm-4" id="Title2"></div>
+          <div class="col-sm-4" id="Title3"></div>
+        </div>
+
+        <div class="row text-center p-2">
+          <div class="col-sm-4" id="Img1"></div>
+          <div class="col-sm-4" id="Img2"></div>
+          <div class="col-sm-4" id="Img3"></div>
+        </div>
+
+        <div class="row text-center p-3">
+          <div class="truncate1 col-sm-4" id="Description1"></div>
+          <div class="truncate2 col-sm-4" id="Description2"></div>
+          <div class="truncate3 col-sm-4" id="Description3"></div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col-sm-4" id="Buy1"></div>
+          <div class="col-sm-4" id="Buy2"></div>
+          <div class="col-sm-4" id="Buy3"></div>
+        </div>
+
+        <div class="row text-center p-3">
+          <div class="col-sm-4" id="Button1"></div>
+          <div class="col-sm-4" id="Button2"></div>
+          <div class="col-sm-4" id="Button3"></div>
+        </div>
+      </div>
+
+        <table class="table table-bordered table-hover d-none text-center box container" id="table">
+          <thead class="theader text-center">
+            <tr>
+              <th class="ths text-center">Delete</th>
+              <th class="ths text-center">Image</th>
+              <th class="ths text-center">Title</th>
+              <th class="ths text-center">Description</th>
+              <th class="ths text-center">Change Like?</th>
+            </tr>
+          </thead>
+          <tbody id="tBody"></tbody>
+        </table>
+    </div>
+
+
+  <div class="notFound d-none">
+    <div class="background">
+        <div class="ground"></div>
+    </div>
+    <div class="x-fluid">
+        <div class="left-section">
+            <div class="inner-content">
+                <h1 class="heading">Oops!</h1>
+                <p class="subheading">Your profile is empty. Let's add some books first.</p>
+            </div>
+            <div class="inner-content">
+                <a class="subheading" href="#" onclick="stateView()" style="color: white;"><p><br>Homepage</p></a>
+            </div>
+            
+        </div>
+        <div class="right-section">
+            <svg class="svgimg" xmlns="http://www.w3.org/2000/svg" viewBox="51.5 -15.288 385 505.565">
+            <g class="bench-legs">
+              <path d="M202.778,391.666h11.111v98.611h-11.111V391.666z M370.833,390.277h11.111v100h-11.111V390.277z M183.333,456.944h11.111
+              v33.333h-11.111V456.944z M393.056,456.944h11.111v33.333h-11.111V456.944z" />
+            </g>
+            <g class="top-bench">
+              <path d="M396.527,397.917c0,1.534-1.243,2.777-2.777,2.777H190.972c-1.534,0-2.778-1.243-2.778-2.777v-8.333
+              c0-1.535,1.244-2.778,2.778-2.778H393.75c1.534,0,2.777,1.243,2.777,2.778V397.917z M400.694,414.583
+              c0,1.534-1.243,2.778-2.777,2.778H188.194c-1.534,0-2.778-1.244-2.778-2.778v-8.333c0-1.534,1.244-2.777,2.778-2.777h209.723
+              c1.534,0,2.777,1.243,2.777,2.777V414.583z M403.473,431.25c0,1.534-1.244,2.777-2.778,2.777H184.028
+              c-1.534,0-2.778-1.243-2.778-2.777v-8.333c0-1.534,1.244-2.778,2.778-2.778h216.667c1.534,0,2.778,1.244,2.778,2.778V431.25z"
+              />
+            </g>
+            <g class="bottom-bench">
+              <path d="M417.361,459.027c0,0.769-1.244,1.39-2.778,1.39H170.139c-1.533,0-2.777-0.621-2.777-1.39v-4.86
+              c0-0.769,1.244-0.694,2.777-0.694h244.444c1.534,0,2.778-0.074,2.778,0.694V459.027z" />
+              <path d="M185.417,443.75H400c0,0,18.143,9.721,17.361,10.417l-250-0.696C167.303,451.65,185.417,443.75,185.417,443.75z" />
+            </g>
+            <g id="lamp">
+              <path class="lamp-details" d="M125.694,421.997c0,1.257-0.73,3.697-1.633,3.697H113.44c-0.903,0-1.633-2.44-1.633-3.697V84.917
+              c0-1.257,0.73-2.278,1.633-2.278h10.621c0.903,0,1.633,1.02,1.633,2.278V421.997z"
+              />
+              <path class="lamp-accent" d="M128.472,93.75c0,1.534-1.244,2.778-2.778,2.778h-13.889c-1.534,0-2.778-1.244-2.778-2.778V79.861
+              c0-1.534,1.244-2.778,2.778-2.778h13.889c1.534,0,2.778,1.244,2.778,2.778V93.75z" />
+              
+              <circle class="lamp-light" cx="119.676" cy="44.22" r="40.51" />
+              <path class="lamp-details" d="M149.306,71.528c0,3.242-13.37,13.889-29.861,13.889S89.583,75.232,89.583,71.528c0-4.166,13.369-13.889,29.861-13.889
+              S149.306,67.362,149.306,71.528z"/>
+              <radialGradient class="light-gradient" id="SVGID_1_" cx="119.676" cy="44.22" r="65" gradientUnits="userSpaceOnUse">
+                <stop  offset="0%" style="stop-color:#FFFFFF; stop-opacity: 1"/>
+                <stop  offset="50%" style="stop-color:#EDEDED; stop-opacity: 0.5">
+                  <animate attributeName="stop-opacity" values="0.0; 0.5; 0.0" dur="5000ms" repeatCount="indefinite"></animate>
+                </stop>
+                <stop  offset="100%" style="stop-color:#EDEDED; stop-opacity: 0"/>
+              </radialGradient>
+              <circle class="lamp-light__glow" fill="url(#SVGID_1_)" cx="119.676" cy="44.22" r="65"/>
+              <path class="lamp-bottom" d="M135.417,487.781c0,1.378-1.244,2.496-2.778,2.496H106.25c-1.534,0-2.778-1.118-2.778-2.496v-74.869
+              c0-1.378,1.244-2.495,2.778-2.495h26.389c1.534,0,2.778,1.117,2.778,2.495V487.781z" />
+            </g>
+          </svg>
+        </div>
+    </div>
+  </div>
+
+  <img src="/Binder/images/bg-CoffeeBooks.png" id="fsb_image" alt="" style="display: block;">
+  
+  <!--===============================================================================================-->
+  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/animsition/js/animsition.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/bootstrap/js/popper.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/select2/select2.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/daterangepicker/moment.min.js"></script>
+  <script src="vendor/daterangepicker/daterangepicker.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/countdowntime/countdowntime.js"></script>
+  <!--===============================================================================================-->
+  <script src="js/main.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=" anonymous "></script> -->
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script> -->
+  <script src="js/binder.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
+/*Variables*/
+:root{
+    --background_color: #353b48;
+    --font: "Fira Sans", sans-serif;
+    --white: #f5f6fa;
+    --black: #0C0E10;
+    --gray: #202425;
+    --blue: #446182;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.notFound{
+    font-family: var(--font);
+    color: var(--white);
+}
+.background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(var(--black), var(--blue));
+}
+.background .ground{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25vh;
+    background: var(--black);
+}
+
+.x-fluid{
+    position: relative;
+    margin: 0 auto;
+    width: 85%;
+    height: 100vh;
+    padding-bottom: 25vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.left-section, .right-section{
+    position: relative
+}
+.left-section{
+    width: 40%;
+}
+
+
+
+.heading{
+    text-align: center;
+    font-size: 9em;
+    line-height: 1.3em;
+    margin: 2rem 0 0.5rem 0;
+    padding: 0;
+    text-shadow: 0 0 1rem #fefefe;
+    
+}
+
+.subheading{
+    font-family: var(--font);
+    color: var(--white);
+    text-align: center;
+    max-width: 480px;
+    font-size: 1.5em;
+    line-height: 1.15em;
+    padding: 0 1rem ;
+    margin: 0 auto;
+
+}
+.subheading p {
+    color: #adadad;
+    font-size: 20px;
+}
+.subheading p:hover {
+    text-decoration: underline;
+    color: #3bc2f97d;
+}
+
+.right-section{
+    width: 50%;
+
+}
+
+.svgimg{
+
+    position: absolute;
+    bottom: 0;
+    padding-top: 10vh;
+    padding-left: 1vh;
+    max-width: 100%;
+    max-height: 100%;
+}
+    .svgimg.bench-legs{
+        fill: var(--black);
+    }
+
+    .top-bench, .bottom-bench{
+        stroke: var(--black);
+        stroke-width: 1px;
+        fill: #5B3E2B;
+    }
+    .bottom-bench path:nth-child(1){
+        fill: darken(#5B3E2B,7%);
+    }
+    .lamp-details{
+        fill: var(--gray);
+    }
+    .lamp-accent{
+        fill: lighten(var(--gray), 5%);
+    }
+    .lamp-bottom{
+        fill: linear-gradient(var(--gray), var(--black));
+    }
+    .lamp-light{
+        fill: #EFEFEF;
+
+    }
+@keyframes glow {
+    0%
+        {text-shadow: 0 0 1rem #fefefe;}
+    50% 
+        {text-shadow: 0 0 1.85rem #ededed;}
+    100%
+        {text-shadow: 0 0 1rem #fefefe;}
+
+}
